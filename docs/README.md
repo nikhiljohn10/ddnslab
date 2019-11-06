@@ -1,17 +1,17 @@
-## Cloudflare DDNS Worker API
+# Cloudflare DDNS Worker API
 
 **Author: Nikhil John**
 ---
 
 ### Prerequisite
 
-- [x] Owns a Domain Name which uses CLoudFlare (eg: example.com).
-- [x] Cloudflare API Token created with Zone.Zone.Read & Zone.DNS.Edit permissions.
+- Owns a Domain Name which uses CLoudFlare (eg: example.com).
+- Cloudflare API Token created with Zone.Zone.Read & Zone.DNS.Edit permissions.
 
 ### Usage
 
 **HTTPS Request**
-
+```
 Method: POST
 URL: https://cf.ddnslab.tech
 ContentType: application/json
@@ -20,7 +20,7 @@ Body: {
   recordName: "The A Record name created for DDNS client",
   proxied: true/false
 }
-
+```
 Example using CURL for Linux Terminal:
 ```
 curl -X POST "https://cf.ddnslab.tech" -H "Content-Type: application/json" --data '{"apiToken":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","recordName":"home.example.com","proxied": true}'
