@@ -1,12 +1,13 @@
 # Cloudflare DDNS Worker API
 
-**Author: Nikhil John**
----
+**Author: Nikhil John [(@nikhiljohn10 / @nikzjon)](https://github.com/nikhiljohn10)**
+
 
 ### Prerequisite
 
 - Owns a Domain Name which uses CLoudFlare (eg: example.com).
 - Cloudflare API Token created with Zone.Zone.Read & Zone.DNS.Edit permissions.
+
 
 ### Usage
 
@@ -81,3 +82,10 @@ pause
 3. Note down the API Token somewhere safe after creation as there is no option to display it again
 4. Use only HTTPS protocol for security reason.
 5. Set proxied to false if you wish to access DDNS location with port which are not allowed by CloudFlare.
+
+
+### References
+
+[CloudFlare API Documentation](https://api.cloudflare.com)
+[DDNS Worker Code](https://github.com/jwala-diamonds/ddnslab.tech/blob/master/worker.js)
+[CloudFlare Worker Documentation](https://developers.cloudflare.com/workers/)
