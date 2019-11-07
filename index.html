@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="keywords" content="HTML5 Template" />
+  <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
+  <meta name="author" content="potenzaglobalsolutions.com" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="public/images/favicon.ico" />
+  <!-- Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
+  <!-- css -->
+  <link rel="stylesheet" type="text/css" href="public/css/style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <!--=================================
+ preloader -->
+    <div id="pre-loader">
+      <img src="public/images/pre-loader/loader-01.svg" alt="">
+    </div>
+    <!--=================================
+ preloader -->
+    <!--=================================
+ header start-->
+    <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <!-- logo -->
+      <div class="text-left navbar-brand-wrapper">
+        <a class="navbar-brand brand-logo" href="https://ddnslab.tech">
+          <h3 class="text-secondary mt-2">DDNS Lab Tech</h3>
+        </a>
+        <a class="navbar-brand brand-logo-mini" href="index.html">
+          <h3 class="text-secondary mt-2">DDNS Lab Tech</h3>
+        </a>
+      </div>
+      <a class="button button-border black float-right mr-3" href="https://github.com/jwala-diamonds/ddnslab.tech" target="blank" name="github" value="Github">Github</a>
+    </nav>
+    <!--=================================
+ header End-->
+    <!--=================================
+wrapper -->
+    <div class="content-wrapper">
+      <!-- main body -->
+      <form id="apiTestForm" method="post">
+        <div class="row">
+          <div class="col-md-4 mb-30">
+            <div class="card card-statistics h-100">
+              <div class="card-body">
+                <h5 class="card-title">About API</h5>
+                <p><b>Cloudflare DDNS Worker API</b> is an simple API to update or create "A" records at specified zone in the Cloudflare DNS with IP address of the client who requested the action. This API is working on top of Cloudlfare API. The Cloudflare worker is working as the middleware for demo to work.</p>
+                <br>
+                <p>API Token is obtained from Cloudflare Dashboard. This is an 40 character long string. This required following permissions : <pre>Zone.Zone.Read</pre><pre>Zone.DNS.Edit</pre></p>
+                <br>
+                <p>Record name is an Fully Qualified Domain Name (FQDN) which will be the A record where client IP is stored. The FQDN have two parts: host name and domain name. The domain name will be used as the zone name.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-30">
+            <div class="card card-statistics h-100">
+              <div class="card-body">
+                <h5 class="card-title">API Option</h5>
+                <div class="form-group">
+                  <label class="control-label" for="apitoken">API Token</label>
+                  <div class="mb-2">
+                    <input type="password" class="form-control" id="apitoken" name="apitoken" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxx" />
+                    <small class="form-text text-muted mt-15 mb-15">
+                      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                    </small>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="rname">Record Name</label>
+                  <div class="mb-2">
+                    <input type="text" class="form-control" id="rname" name="rname" placeholder="home.example.com" />
+                    <small class="form-text text-muted mt-15 mb-15">
+                      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                    </small>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="proxied">Proxied</label>
+                  <div class="mb-2">
+                    <div class="checkbox checbox-switch switch-success">
+                      <label>
+                        <input type="checkbox" id="proxied" name="proxied" checked="checked" />
+                        <span></span>
+                        Turn on/off the proxy option
+                      </label>
+                    </div>
+                    <small class="form-text text-muted mt-15 mb-15">
+                      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-30">
+            <div class="card card-statistics h-100">
+              <div class="card-body">
+                <h5 class="card-title">Actions</h5>
+                <div class="form-group">
+                  <label for="ipaddress">Your IP Address</label>
+                  <input class="form-control" id="ipaddress" name="ipaddress" type="text" placeholder="Loading your IP . . . " readonly>
+                </div>
+                <div class="form-group">
+                  <button type="reset" class="button" name="reset" value="Reset">Reset</button>
+                  <button type="submit" class="button" name="test" value="Test">Test</button>
+                  
+                </div>
+                <div class="form-group">
+                  <label>Output :</label>
+                  <hr>
+                  <code class="mt-15 mb-15 highlighter-rouge" id="output"></code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!--=================================
+ wrapper -->
+      <!--=================================
+ footer -->
+      <footer class="bg-white p-4">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-center text-md-center">
+              <p class="mb-0"> &copy; Copyright <span id="copyright">
+                  <script>
+                  document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+                  </script>
+                </span> <a href="#"> DDNSLab.Tech </a></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  </div>
+  </div>
+  <!--=================================
+ footer -->
+  <!--=================================
+ jquery -->
+  <!-- jquery -->
+  <script src="public/js/jquery-3.3.1.min.js"></script>
+  <!-- plugins-jquery -->
+  <script src="public/js/plugins-jquery.js"></script>
+  <!-- plugin_path -->
+  <script>
+  var plugin_path = 'public/js/';
+  </script>
+  <!-- charts sparkline -->
+  <script src="public/js/sparkline.init.js"></script>
+  <!-- sweetalert2 -->
+  <script src="public/js/sweetalert2.js"></script>
+  <!-- toastr -->
+  <script src="public/js/toastr.js"></script>
+  <!-- validation -->
+  <script src="public/js/validation.js"></script>
+  <!-- lobilist -->
+  <script src="public/js/lobilist.js"></script>
+  <!-- custom -->
+  <script src="public/js/custom.js"></script>
+</body>
+
+</html>
