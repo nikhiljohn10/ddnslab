@@ -81,7 +81,7 @@ NOTE: This file contains all scripts for the actual Template.
       const init = {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json;charset=UTF-8'
+          'content-type': 'application/json;charset=UTF-8',
         },
         body: JSON.stringify({
           "apiToken": $("#apitoken").val(),
@@ -100,9 +100,9 @@ NOTE: This file contains all scripts for the actual Template.
           return fetch(url, init)
             .then(response => response.json())
             .then(data => swal.insertQueueStep((data) => {
-              if(data.success){
+              if (data.success) {
                 return data.message;
-              }else{
+              } else {
                 return data.error;
               }
             }))
