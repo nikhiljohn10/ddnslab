@@ -93,7 +93,7 @@ NOTE: This file contains all scripts for the actual Template.
       contentType: 'application/json',
       dataType: 'json',
       success: function(data) {
-        $('#output').text(data);
+        $('#output').text(JSON.stringify(data, null, '\t'));
       },
       error: function(jqXHR, exception) {
         var msg = '';
