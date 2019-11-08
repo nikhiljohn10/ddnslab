@@ -22554,7 +22554,7 @@ div.style-customizer .content-chooser input[type=radio]:checked ~ label {
 @media (max-width: 991px) {
   .content-wrapper {
     margin-left: 0;
-    padding: 20px 20px; }
+    padding: 75px 20px 20px; }
   .side-menu-fixed {
     left: -230px; }
   .slide-menu .side-menu-fixed {
