@@ -99,13 +99,13 @@ NOTE: This file contains all scripts for the actual Template.
         preConfirm: () => {
           return fetch(url, init)
             .then(response => response.json())
-            .then(data => swal.insertQueueStep((data) => {
+            .then(data => {
               if (data.success) {
-                return data.message;
+                return swal.insertQueueStep(data.message);
               } else {
-                return data.error;
+                return swal.insertQueueStep(data.error);
               }
-            }))
+            })
             .catch(() => {
               swal.insertQueueStep({
                 type: 'error',
