@@ -14,7 +14,7 @@
 **HTTPS Request**
 ```
 Method: POST
-URL: https://cf.ddnslab.tech
+URL: https://ddnslab.tech/api/v1/
 ContentType: application/json
 Body: {
   apiToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -24,7 +24,7 @@ Body: {
 ```
 Example using CURL for Linux Terminal:
 ```
-curl -X POST "https://cf.ddnslab.tech" -H "Content-Type: application/json" --data '{"apiToken":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","recordName":"home.example.com","proxied": true}'
+curl -X POST "https://ddnslab.tech/api/v1/" -H "Content-Type: application/json" --data '{"apiToken":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","recordName":"home.example.com","proxied": true}'
 ```
 
 Example using Node.JS for Linux Users:
@@ -38,7 +38,7 @@ const data = JSON.stringify({
 })
 
 const options = {
-  hostname: 'cf.ddnslab.tech',
+  hostname: 'https://ddnslab.tech/api/v1/',
   port: 443,
   path: '/',
   method: 'POST',
@@ -68,7 +68,7 @@ Example using Batch File for Windows Users:
 title CloudFlare DDNS Service
 echo Initiating service...
 :loop
-curl https://cf.ddnslab.tech/ -H Content-Type:application/json --data "{\"apiToken\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"recordName\":\"home.example.com\",\"proxied\":true}"
+curl https://ddnslab.tech/api/v1/ -H Content-Type:application/json --data "{\"apiToken\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"recordName\":\"home.example.com\",\"proxied\":true}"
 echo ^: %date% %time%
 timeout /t 60 /nobreak > NUL
 goto loop

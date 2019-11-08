@@ -5,7 +5,7 @@ Author: Nikhil John
 
 
 Method: POST
-URL: https://cf.ddnslab.tech
+URL: https://ddnslab.tech/api/v1/
 ContentType: application/json
 Body: {
   apiToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -15,7 +15,7 @@ Body: {
 
 Example using CURL:
 
-  $ curl -X POST "https://cf.ddnslab.tech" -H "Content-Type: application/json" --data '{"apiToken":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","recordName":"home.example.com","proxied": true}'
+  $ curl -X POST "https://ddnslab.tech/api/v1/" -H "Content-Type: application/json" --data '{"apiToken":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","recordName":"home.example.com","proxied": true}'
 
 Notes:
 1. API Token is to be created in CloudFlare (My Profile > API Tokens > Create Token)

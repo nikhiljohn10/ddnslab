@@ -13,7 +13,6 @@ NOTE:
   $.validator.setDefaults({
     submitHandler: function() {
       validator.resetForm();
-      alert("submitted!");
     }
   });
   $(document).ready(function() {

@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="keywords" content="HTML5 Template" />
-  <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
-  <meta name="author" content="potenzaglobalsolutions.com" />
+  <meta name="keywords" content="ddns,lab,tech,cloudflare,worker,api" />
+  <meta name="description" content="Cloudflare DDNS Worker API is an simple API to update or create A records at specified zone in the Cloudflare DNS with IP address of the client who requested the action" />
+  <meta name="author" content="Nikhil John" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template</title>
   <!-- Favicon -->
@@ -34,7 +34,7 @@
         <a class="navbar-brand brand-logo" href="https://ddnslab.tech">
           <h3 class="text-secondary mt-2">DDNS Lab Tech</h3>
         </a>
-        <a class="navbar-brand brand-logo-mini" href="index.html">
+        <a class="navbar-brand brand-logo-mini" href="https://ddnslab.tech">
           <h3 class="text-secondary mt-2">DDNS Lab Tech</h3>
         </a>
       </div>
@@ -54,7 +54,7 @@ wrapper -->
                 <h5 class="card-title">About API</h5>
                 <p><b>Cloudflare DDNS Worker API</b> is an simple API to update or create "A" records at specified zone in the Cloudflare DNS with IP address of the client who requested the action. This API is working on top of Cloudlfare API. The Cloudflare worker is working as the middleware for demo to work.</p>
                 <br>
-                <p>API Token is obtained from Cloudflare Dashboard. This is an 40 character long string. This required following permissions : </p>
+                <p>API Token is obtained from Cloudflare Dashboard. This is an 40 character long string. This required following permissions :</p>
                 <pre><b>Zone.Zone.Read
 Zone.DNS.Edit</b></pre>
                 <p>Record name is an Fully Qualified Domain Name (FQDN) which will be the A record where client IP is stored. The FQDN have two parts: host name and domain name. The domain name will be used as the zone name.</p>
@@ -70,16 +70,16 @@ Zone.DNS.Edit</b></pre>
                   <div class="mb-2">
                     <input type="password" class="form-control" id="apitoken" name="apitoken" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxx" />
                     <small class="form-text text-muted mt-15 mb-15">
-                      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                      The API Token must 40 characters long and it is obtained from Cloudflare dashboard > My Profile > API Tokens > Create Token.
                     </small>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label" for="rname">Record Name</label>
                   <div class="mb-2">
-                    <input type="text" class="form-control" id="rname" name="rname" placeholder="home . example . com" />
+                    <input type="text" class="form-control" id="rname" name="rname" placeholder="home.example.com" />
                     <small class="form-text text-muted mt-15 mb-15">
-                      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                      This is used to create a new "A" record or update existing record in the Cloudflare DNS of the specified zone which points to the current public IP of your gateway.
                     </small>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ Zone.DNS.Edit</b></pre>
                       </label>
                     </div>
                     <small class="form-text text-muted mt-15 mb-15">
-                      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                      Turn off this option if you need to bypass the Cloudflare proxy and access particular ports like 22, 8000, 10000, etc. This will disable all security and privacy features provided by Cloudlfare for that record.
                     </small>
                   </div>
                 </div>
@@ -110,8 +110,9 @@ Zone.DNS.Edit</b></pre>
                   <input class="form-control" id="ipaddress" name="ipaddress" type="text" placeholder="Loading your IP . . . " readonly>
                 </div>
                 <div class="form-group">
-                  <button type="reset" class="button" name="reset" value="Reset">Reset</button>
                   <button type="submit" class="button" name="test" value="Test">Test</button>
+                  <button type="reset" class="button" name="reset" value="Reset">Reset</button>
+                  <button type="button" class="button" id="run" value="Run">Run</button>
                 </div>
                 <div class="form-group">
                   <label>Output :</label>
@@ -163,7 +164,7 @@ Zone.DNS.Edit</b></pre>
   <!-- toastr -->
   <script src="public/js/toastr.js"></script>
   <!-- validation -->
-  <script src="public/js/validation.js"></script>
+  <!-- <script src="public/js/validation.js"></script> -->
   <!-- lobilist -->
   <script src="public/js/lobilist.js"></script>
   <!-- custom -->
