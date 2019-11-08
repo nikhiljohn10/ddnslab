@@ -81,7 +81,7 @@ NOTE: This file contains all scripts for the actual Template.
       const init = {
         method: 'POST',
         headers: {
-          'content-type': 'application/json;charset=UTF-8',
+          'content-type': 'application/json',
         },
         body: JSON.stringify({
           "apiToken": $("#apitoken").val(),
