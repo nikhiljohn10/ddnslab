@@ -76,45 +76,47 @@ NOTE: This file contains all scripts for the actual Template.
         Run the Test
   *************************/
   POTENZA.startTest = function() {
-    console.log("Starting");
-    var asde = $("#apitoken").val();
-    var asd3 = $("#rname").val();
-    var asd = $("#proxied").is(':checked');
-    console.log(asd);
-    $.ajax({
-      url: 'https://ddnslab.tech/api/v1/',
-      type: 'post',
-      data: JSON.stringify({
-        "apiToken": $("#apitoken").val(),
-        "recordName": $("#rname").val(),
-        "proxied": $("#proxied").is(':checked')
-      }),
-      // crossDomain: true,
-      contentType: 'application/json',
-      dataType: 'json',
-      success: function(data) {
-        $('#output').text(JSON.stringify(data, null, '\t'));
-      },
-      error: function(jqXHR, exception) {
-        var msg = '';
-        if (jqXHR.status === 0) {
-          msg = 'Not connecting';
-        } else if (jqXHR.status == 404) {
-          msg = 'Requested page not found. [404]';
-        } else if (jqXHR.status == 500) {
-          msg = 'Internal Server Error [500].';
-        } else if (exception === 'parsererror') {
-          msg = 'Requested JSON parse failed.';
-        } else if (exception === 'timeout') {
-          msg = 'Time out error.';
-        } else if (exception === 'abort') {
-          msg = 'Ajax request aborted.';
-        } else {
-          msg = 'Uncaught Error.\n' + jqXHR.responseText;
+    if ($("#apiTestForm").valid()) {
+      const url = 'https://ddnslab.tech/api/v1/';
+      const init = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        },
+        body: JSON.stringify({
+          "apiToken": $("#apitoken").val(),
+          "recordName": $("#rname").val(),
+          "proxied": $("#proxied").is(':checked')
+        }),
+      };
+      swal.queue([{
+        title: 'Confirmation',
+        confirmButtonText: 'Confirm',
+        confirmButtonColor: '#3085d6',
+        showCloseButton: true,
+        text: 'You are about to create or update the A record ' + $("#rname").val() + ' with your public IP address.',
+        showLoaderOnConfirm: true,
+        preConfirm: () => {
+          return fetch(url, init)
+            .then(response => response.json())
+            .then(data => swal.insertQueueStep((data) => {
+              if(data.success){
+                return data.message;
+              }else{
+                return data.error;
+              }
+            }))
+            .catch(() => {
+              swal.insertQueueStep({
+                type: 'error',
+                title: 'Unable to update IP'
+              })
+            })
         }
-        $('#output').text("Error : "+msg);
-      },
-    });
+      }]);
+    } else {
+      return false;
+    }
   };
 
   /*************************
@@ -945,12 +947,13 @@ NOTE: This file contains all scripts for the actual Template.
     POTENZA.preloader();
     POTENZA.pieChart();
   });
-  //Form reset functions
+  //Form functions
   $("#apiTestForm").on('reset', function(event) {
     POTENZA.getIP();
   });
-  $("#run").on('click', function(event) {
-    POTENZA.startTest();
+  $("#apiTestForm").on('submit', function(event) {
+    event.preventDefault();
+    return POTENZA.startTest();
   });
 
   //Document ready functions

@@ -10,19 +10,20 @@ NOTE:
 
 (function($) {
   "use strict";
-  $.validator.setDefaults({
-    submitHandler: function() {
-      validator.resetForm();
-    }
-  });
   $(document).ready(function() {
+    $.validator.addMethod("fqdn", function(value, element) {
+      return this.optional(element) || /^.+\...+\...+/.test(value);
+    }, "Invalid FQDN format");
     $("#apiTestForm").validate({
       rules: {
         apitoken: {
           required: true,
           minlength: 40
         },
-        rname: "required",
+        rname: {
+          required: true,
+          fqdn: true
+        }
       },
       messages: {
         apitoken: {
@@ -30,9 +31,8 @@ NOTE:
           minlength: "Invalid API Token"
         },
         rname: {
-          required: "Please enter a valid FQDN",
-          url: true
-        },
+          required: "Please enter a valid FQDN"
+        }
       },
       errorElement: "em",
       errorPlacement: function(error, element) {
