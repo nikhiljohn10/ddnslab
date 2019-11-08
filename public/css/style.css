@@ -20224,7 +20224,7 @@ ul.list-unstyled li {
   padding: 30px;
   overflow: hidden;
   min-height: 100vh;
-  margin-top: 50px;
+  padding-top: 88px;
   -webkit-transition: all 0.9s ease;
   -moz-transition: all 0.9s ease;
   -ms-transition: all 0.9s ease;
