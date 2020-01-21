@@ -157,7 +157,9 @@ async function createRecord(rname,zid,ip,px,auth) {
 
 async function getZonName(name){
   const arr = name.split('.').reverse()
-  arr.pop()
+  while(arr.length>2){
+  	arr.pop()
+  }
   return arr.reverse().join('.')
 }
 
