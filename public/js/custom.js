@@ -29,10 +29,10 @@ NOTE: This file contains all scripts for the actual Template.
   *************************/
   MODEL.getIP = function() {
     $.ajax({
-      url: "https://api6.ipify.org/?format=json",
+      url: "https://api6.ipify.org/?format=jsonp",
       dataType: "jsonp",
       success: function(data) { 
-        console.log((data.ip)
+        console.log(data.ip)
         $("#ipaddress").val(data.ip); 
       }
     });
