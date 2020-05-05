@@ -32,16 +32,12 @@ NOTE: This file contains all scripts for the actual Template.
       .done(function(data) {
         $("#ipaddress").val(data.ip);
       })
-      .fail(function( jqxhr, textStatus, error ) {
-        var err = textStatus + ", " + error;
-        swal.insertQueueStep({
-          type: 'error',
-          title: err
-        })
+      .fail(function() {
+        $("#ipaddress").val("IP fetch is blocked.");
         swal.queue([{
           title: 'Error',
           showCloseButton: true,
-          text: 'AD Blocker is blocking IP fetch. Request Failed: ' + err,
+          text: 'AD Blocker is blocking IP fetch.'
         }]);
       });
   };
