@@ -31,7 +31,10 @@ NOTE: This file contains all scripts for the actual Template.
     $.ajax({
       url: "https://api6.ipify.org/?format=json",
       dataType: "jsonp",
-      success: function(response) { $("#ipaddress").val(data.ip); }
+      success: function(data) { 
+        console.log((data.ip)
+        $("#ipaddress").val(data.ip); 
+      }
     });
   };
 
