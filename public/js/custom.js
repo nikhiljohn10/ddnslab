@@ -67,14 +67,21 @@ NOTE: This file contains all scripts for the actual Template.
         showLoaderOnConfirm: true,
         preConfirm: () => {
           return fetch(url, init)
-            .then(response => response.json())
+            .then(response => response.text())
             .then(data => {
-              console.log(data)
-              if (data.success) {
-                return swal.insertQueueStep(data.message);
-              } else {
-                return swal.insertQueueStep(data.error);
-              }
+              switch(data.split(" ")[0]) {
+                case "good":
+                  return swal.insertQueueStep("IP Updated successfully");
+                  break;
+                case "nochg":
+                  return swal.insertQueueStep("No IP Change");
+                  break;
+                default:
+                  swal.insertQueueStep({
+                    type: 'error',
+                    title: 'Unknown error'
+                  })
+              } 
             })
             .catch(() => {
               swal.insertQueueStep({

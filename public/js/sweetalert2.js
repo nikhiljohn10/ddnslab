@@ -1,8 +1,3 @@
-/*
-
-NOTE: 
-
-*/
 
  (function($){
   "use strict";
