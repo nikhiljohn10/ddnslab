@@ -28,16 +28,23 @@ NOTE: This file contains all scripts for the actual Template.
         Get IP
   *************************/
   MODEL.getIP = function() {
-    $.ajax({
-      url: "https://api6.ipify.org/?format=jsonp",
-      dataType: "jsonp",
-      success: function(data) { 
-        console.log(data.ip)
-        $("#ipaddress").val(data.ip); 
-      }
-    });
+    $.getJSON("https://api6.ipify.org/?format=json")
+      .done(function(data) {
+        $("#ipaddress").val(data.ip);
+      })
+      .fail(function( jqxhr, textStatus, error ) {
+        var err = textStatus + ", " + error;
+        swal.insertQueueStep({
+          type: 'error',
+          title: err
+        })
+        swal.queue([{
+          title: 'Error',
+          showCloseButton: true,
+          text: 'AD Blocker is blocking IP fetch. Request Failed: ' + err,
+        }]);
+      });
   };
-
   /*************************
         Run the Test
   *************************/
