@@ -1,9 +1,5 @@
 /*
 
-Template:  Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template
-Author: potenzaglobalsolutions.com
-Design and Developed by: potenzaglobalsolutions.com
-
 NOTE:  This file includes main plugins which are applied on most of all pages. Other plugins will load automatic when needed. If you don't want to use any plugins from below. You can simply remove that from this file.
 
 */

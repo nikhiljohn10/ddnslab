@@ -1,9 +1,5 @@
 /*
 
-Template:  Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template
-Author: potenzaglobalsolutions.com
-Design and Developed by: potenzaglobalsolutions.com
-
 NOTE: 
 
 */

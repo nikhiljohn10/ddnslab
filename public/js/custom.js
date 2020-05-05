@@ -1,51 +1,12 @@
 /*
 
-Template:  Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template
-Author: potenzaglobalsolutions.com
-Design and Developed by: potenzaglobalsolutions.com
-
 NOTE: This file contains all scripts for the actual Template.
 
 */
 
-/*================================================
-[  Table of contents  ]
-================================================
-
-:: Predefined Variables 
-:: Tooltip
-:: Preloader
-:: PHP Contact Form 
-:: Counter
-:: Back to top
-:: NiceScroll
-:: Mailchimp
-:: PieChart 
-:: DataTable
-:: Wow animation on scroll
-:: Select
-:: Accordion
-:: Search
-:: Sidebarnav
-:: Fullscreenwindow
-:: Today date and time
-:: Summernote
-:: Colorpicker
-:: Touchspin
-:: Editormarkdown
-:: Rating
-:: Calendar List View
-:: Repeater form
-:: Wizard form
- 
-======================================
-[ End table content ]
-======================================*/
-//POTENZA var
-
 (function($) {
   "use strict";
-  var POTENZA = {};
+  var MODEL = {};
 
   /*************************
   Predefined Variables
@@ -66,7 +27,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
         Get IP
   *************************/
-  POTENZA.getIP = function() {
+  MODEL.getIP = function() {
     $.getJSON("https://api6.ipify.org/?format=json", function(data) {
       $("#ipaddress").val(data.ip);
     });
@@ -75,7 +36,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
         Run the Test
   *************************/
-  POTENZA.startTest = function() {
+  MODEL.startTest = function() {
     if ($("#apiTestForm").valid()) {
       const url = 'https://ddnslab.tech/api/v1/';
       const init = {
@@ -100,6 +61,7 @@ NOTE: This file contains all scripts for the actual Template.
           return fetch(url, init)
             .then(response => response.json())
             .then(data => {
+              console.log(data)
               if (data.success) {
                 return swal.insertQueueStep(data.message);
               } else {
@@ -128,7 +90,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
           Preloader
   *************************/
-  POTENZA.preloader = function() {
+  MODEL.preloader = function() {
     $("#load").fadeOut();
     $('#pre-loader').delay(0).fadeOut('slow');
   };
@@ -137,7 +99,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
        counter
 *************************/
-  POTENZA.counters = function() {
+  MODEL.counters = function() {
     var counter = jQuery(".counter");
     if (counter.length > 0) {
       loadScript(plugin_path + 'counter/jquery.countTo.js', function() {
@@ -154,7 +116,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
        Back to top
   *************************/
-  POTENZA.goToTop = function() {
+  MODEL.goToTop = function() {
     var $goToTop = $('#back-to-top');
     $goToTop.hide();
     $window.scroll(function() {
@@ -170,7 +132,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
           NiceScroll
   *************************/
-  POTENZA.pniceScroll = function() {
+  MODEL.pniceScroll = function() {
     loadScript(plugin_path + 'nicescroll/jquery.nicescroll.js', function() {
       $(".scrollbar").niceScroll({
         scrollspeed: 150,
@@ -207,7 +169,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
        mailchimp
   *************************/
-  POTENZA.mailchimp = function() {
+  MODEL.mailchimp = function() {
     $(document).on('click', '#mc-embedded-subscribe', function(event) {
       event.preventDefault();
       var email_id = $('#mce-EMAIL').val();
@@ -242,7 +204,7 @@ NOTE: This file contains all scripts for the actual Template.
   /****************************************************
                 pieChart
   ****************************************************/
-  POTENZA.pieChart = function() {
+  MODEL.pieChart = function() {
     if ($pieChart.exists()) {
       loadScript(plugin_path + 'easy-pie-chart/easy-pie-chart.js', function() {
         $pieChart.each(function() {
@@ -280,7 +242,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
         DataTable
   *************************/
-  POTENZA.datatables = function() {
+  MODEL.datatables = function() {
     if ($('#datatable').exists()) {
       loadScript(plugin_path + 'bootstrap-datatables/jquery.dataTables.min.js', function() {
         loadScript(plugin_path + 'bootstrap-datatables/dataTables.bootstrap4.min.js', function() {
@@ -293,7 +255,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*********************************
       Wow animation on scroll
   *********************************/
-  POTENZA.wowanimation = function() {
+  MODEL.wowanimation = function() {
     if ($('.wow').exists()) {
       var wow = new WOW({
         animateClass: 'animated',
@@ -308,7 +270,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
         select
   *************************/
-  POTENZA.fancyselect = function() {
+  MODEL.fancyselect = function() {
     if ($('.fancyselect').exists()) {
       loadScript(plugin_path + 'jquery-nice-select/jquery-nice-select.js', function() {
         $('select.fancyselect:not(.ignore)').niceSelect();
@@ -319,7 +281,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
       Accordion
 *************************/
-  POTENZA.accordion = function() {
+  MODEL.accordion = function() {
 
     $('.accordion').each(function(i, elem) {
       var $elem = $(this),
@@ -346,7 +308,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
          Search
   *************************/
-  POTENZA.searchbox = function() {
+  MODEL.searchbox = function() {
     if (jQuery('.search').exists()) {
       jQuery('.search-btn').on("click", function() {
         jQuery('.search').toggleClass("search-open");
@@ -364,7 +326,7 @@ NOTE: This file contains all scripts for the actual Template.
   /*************************
       Sidebarnav
   *************************/
-  POTENZA.Sidebarnav = function() {
+  MODEL.Sidebarnav = function() {
     /*Sidebar Navigation*/
     $(document).on('click', '#button-toggle', function(e) {
       $(".dropdown.open > .dropdown-toggle").dropdown("toggle");
@@ -406,7 +368,7 @@ NOTE: This file contains all scripts for the actual Template.
       Fullscreenwindow
   *************************/
 
-  POTENZA.Fullscreenwindow = function() {
+  MODEL.Fullscreenwindow = function() {
     if ($('#btnFullscreen').exists()) {
       function toggleFullscreen(elem) {
         elem = elem || document.documentElement;
@@ -443,7 +405,7 @@ NOTE: This file contains all scripts for the actual Template.
       Today date and time
   *************************/
 
-  POTENZA.todatdayandtime = function() {
+  MODEL.todatdayandtime = function() {
     var d = new Date();
     var weekday = new Array(7);
     weekday[0] = "Sunday";
@@ -466,7 +428,7 @@ NOTE: This file contains all scripts for the actual Template.
       Summernote
   *************************/
 
-  POTENZA.summernoteeditor = function() {
+  MODEL.summernoteeditor = function() {
     if ($('#summernote').exists()) {
       $('#summernote').summernote({
         height: 300, // set editor height
@@ -481,7 +443,7 @@ NOTE: This file contains all scripts for the actual Template.
       Colorpicker
   *************************/
 
-  POTENZA.colorpicker = function() {
+  MODEL.colorpicker = function() {
     if ($('#cp1, #cp2, #cp3, #cp4, #cp5, #cp6, #cp17, #cp8, #cp9, #cp10, #cp11, #cp12, #cp13').exists()) {
       $('#cp1').colorpicker();
       $('#cp2, #cp3a, #cp3b').colorpicker();
@@ -519,7 +481,7 @@ NOTE: This file contains all scripts for the actual Template.
       Touchspin
   *************************/
 
-  POTENZA.ptTouchSpin = function() {
+  MODEL.ptTouchSpin = function() {
     if ($('input.touchspin-input').exists()) {
       $("input[name='demo1'].touchspin-input").TouchSpin({
         min: 0,
@@ -565,7 +527,7 @@ NOTE: This file contains all scripts for the actual Template.
       Editormarkdown
   *************************/
 
-  POTENZA.editormarkdown = function() {
+  MODEL.editormarkdown = function() {
     if ($('#editor-markdown-01, #editor-markdown-02, #editor-markdown-03').exists()) {
       new SimpleMDE({
         element: document.getElementById("editor-markdown-01"),
@@ -593,7 +555,7 @@ NOTE: This file contains all scripts for the actual Template.
       Rating
   *************************/
 
-  POTENZA.ptrating = function() {
+  MODEL.ptrating = function() {
     $('#default').raty({
       starOff: 'fa fa-star-o text-muted',
       starOn: 'fa fa-star text-warning'
@@ -756,7 +718,7 @@ NOTE: This file contains all scripts for the actual Template.
       Calendar List View
   *************************/
 
-  POTENZA.calendarlist = function() {
+  MODEL.calendarlist = function() {
     if ($('#calendar-list').exists()) {
       $('#calendar-list').fullCalendar({
         header: {
@@ -839,7 +801,7 @@ NOTE: This file contains all scripts for the actual Template.
      repeater form
   *************************/
 
-  POTENZA.repeaterform = function() {
+  MODEL.repeaterform = function() {
     if ($('.repeater, .repeater-file, .repeater-add').exists()) {
       $('.repeater, .repeater-file, .repeater-add').repeater({
         show: function() {
@@ -854,7 +816,7 @@ NOTE: This file contains all scripts for the actual Template.
      wizard form
   *************************/
 
-  POTENZA.wizardform = function() {
+  MODEL.wizardform = function() {
     if ($('#example-form, #example-basic, #example-manipulation, #example-vertical').exists()) {
       var form = $("#example-form");
       form.validate({
@@ -909,7 +871,7 @@ NOTE: This file contains all scripts for the actual Template.
      Dynamic active menu
   *************************/
 
-  POTENZA.navactivation = function() {
+  MODEL.navactivation = function() {
     var path = window.location.pathname.split("/").pop();
     var target = $('.side-menu-fixed .navbar-nav a[href="' + path + '"]');
     target.parent().addClass('active');
@@ -940,45 +902,45 @@ NOTE: This file contains all scripts for the actual Template.
   };
 
   /****************************************************
-       POTENZA Window load and functions
+       MODEL Window load and functions
   ****************************************************/
   //Window load functions
   $window.on("load", function() {
-    POTENZA.preloader();
-    POTENZA.pieChart();
+    MODEL.preloader();
+    MODEL.pieChart();
   });
   //Form functions
   $("#apiTestForm").on('reset', function(event) {
-    POTENZA.getIP();
+    MODEL.getIP();
   });
   $("#apiTestForm").on('submit', function(event) {
     event.preventDefault();
-    return POTENZA.startTest();
+    return MODEL.startTest();
   });
 
   //Document ready functions
   $document.ready(function() {
-    POTENZA.counters();
-    POTENZA.goToTop();
-    POTENZA.pniceScroll();
-    POTENZA.mailchimp();
-    POTENZA.accordion();
-    POTENZA.datatables();
-    POTENZA.wowanimation();
-    POTENZA.fancyselect();
-    POTENZA.searchbox();
-    POTENZA.Sidebarnav();
-    POTENZA.todatdayandtime();
-    POTENZA.summernoteeditor();
-    POTENZA.colorpicker();
-    POTENZA.editormarkdown();
-    POTENZA.ptTouchSpin();
-    POTENZA.ptrating();
-    POTENZA.calendarlist();
-    POTENZA.repeaterform();
-    POTENZA.wizardform();
-    POTENZA.navactivation();
-    POTENZA.Fullscreenwindow();
-    POTENZA.getIP();
+    MODEL.counters();
+    MODEL.goToTop();
+    MODEL.pniceScroll();
+    MODEL.mailchimp();
+    MODEL.accordion();
+    MODEL.datatables();
+    MODEL.wowanimation();
+    MODEL.fancyselect();
+    MODEL.searchbox();
+    MODEL.Sidebarnav();
+    MODEL.todatdayandtime();
+    MODEL.summernoteeditor();
+    MODEL.colorpicker();
+    MODEL.editormarkdown();
+    MODEL.ptTouchSpin();
+    MODEL.ptrating();
+    MODEL.calendarlist();
+    MODEL.repeaterform();
+    MODEL.wizardform();
+    MODEL.navactivation();
+    MODEL.Fullscreenwindow();
+    MODEL.getIP();
   });
 })(jQuery);
