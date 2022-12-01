@@ -2,19 +2,18 @@
 
 **Author: Nikhil John [(@nikhiljohn10 / @nikzjon)](https://github.com/nikhiljohn10)**
 
-
 ### Prerequisite
 
 - Owns a Domain Name which uses CLoudFlare (eg: example.com).
 - Cloudflare API Token created with Zone.Zone.Read & Zone.DNS.Edit permissions.
 
-
 ### Usage
 
 **HTTPS Request**
+
 ```
 Method: POST
-URL: https://ddnslab.tech/api/v1/
+URL: https://ddnslab.nikz.in
 ContentType: application/json
 Body: {
   apiToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -22,23 +21,26 @@ Body: {
   proxied: true/false
 }
 ```
+
 Example using CURL for Linux Terminal:
+
 ```
-curl -X POST "https://ddnslab.tech/api/v1/" -H "Content-Type: application/json" --data '{"apiToken":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","recordName":"home.example.com","proxied": true}'
+curl -X POST "https://ddnslab.nikz.in/" -H "Content-Type: application/json" --data '{"apiToken":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","recordName":"home.example.com","proxied": true}'
 ```
 
 Example using Node.JS for Linux Users:
+
 ```
 const https = require('https')
 
 const data = JSON.stringify({
   "apiToken":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
   "recordName":"home.example.com",
-  "proxied": true 
+  "proxied": true
 })
 
 const options = {
-  hostname: 'https://ddnslab.tech/api/v1/',
+  hostname: 'https://ddnslab.nikz.in/',
   port: 443,
   path: '/',
   method: 'POST',
@@ -62,27 +64,27 @@ req.end()
 ```
 
 Example using Batch File for Windows Users:
+
 ```
 @echo off
 
 title CloudFlare DDNS Service
 echo Initiating service...
 :loop
-curl https://ddnslab.tech/api/v1/ -H Content-Type:application/json --data "{\"apiToken\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"recordName\":\"home.example.com\",\"proxied\":true}"
+curl https://ddnslab.nikz.in/ -H Content-Type:application/json --data "{\"apiToken\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"recordName\":\"home.example.com\",\"proxied\":true}"
 echo ^: %date% %time%
 timeout /t 60 /nobreak > NUL
 goto loop
 pause
 ```
 
-
 **Notes:**
+
 1. API Token is to be created in CloudFlare (My Profile > API Tokens > Create Token)
 2. API Token permissions needed are Zone.Zone.Read & Zone.DNS.Edit
 3. Note down the API Token somewhere safe after creation as there is no option to display it again
 4. Use only HTTPS protocol for security reason.
 5. Set proxied to false if you wish to access DDNS location with port which are not allowed by CloudFlare.
-
 
 ### References
 
