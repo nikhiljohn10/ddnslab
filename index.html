@@ -5,14 +5,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="keywords" content="ddns,lab,tech,cloudflare,worker,api" />
-  <meta name="description" content="Cloudflare DDNS Worker API is an simple API to update or create A records at specified zone in the Cloudflare DNS with IP address of the client who requested the action" />
+  <meta name="description"
+    content="Cloudflare DDNS Worker API is an simple API to update or create A records at specified zone in the Cloudflare DNS with IP address of the client who requested the action" />
   <meta name="author" content="Nikhil John" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>DDNS Lab</title>
   <!-- Favicon -->
   <link rel="shortcut icon" href="public/images/favicon.ico" />
   <!-- Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="public/css/style.css" />
 </head>
@@ -38,7 +40,8 @@
           <h3 class="text-secondary mt-2">DDNS Lab</h3>
         </a>
       </div>
-      <a class="button button-border black float-right mr-2" href="https://github.com/jwala-diamonds/ddnslab.tech" target="blank" name="github" value="Github">Github</a>
+      <a class="button button-border black float-right mr-2" href="https://github.com/jwala-diamonds/ddnslab.tech"
+        target="blank" name="github" value="Github">Github</a>
     </nav>
     <!--=================================
  header End-->
@@ -52,14 +55,21 @@ wrapper -->
             <div class="card card-statistics h-100">
               <div class="card-body">
                 <h5 class="card-title">About API</h5>
-                <p><b>Cloudflare DDNS Worker API</b> is an simple API to update or create "A" records at specified zone in the Cloudflare DNS with IP address of the client who requested the action. This API is working on top of Cloudlfare API. The Cloudflare worker is working as the middleware for demo to work.</p>
+                <p><b>Cloudflare DDNS Worker API</b> is an simple API to update or create "A" records at specified zone
+                  in the Cloudflare DNS with IP address of the client who requested the action. This API is working on
+                  top of Cloudlfare API. The Cloudflare worker is working as the middleware for demo to work.</p>
                 <br>
-                <p>API Token is obtained from Cloudflare Dashboard. This is an 40 character long string. This required following permissions :</p>
+                <p>API Token is obtained from Cloudflare Dashboard. This is an 40 character long string. This required
+                  following permissions :</p>
                 <pre><b>Zone.Zone.Read
 Zone.DNS.Edit</b></pre>
-                <p>Record name is an Fully Qualified Domain Name (FQDN) which will be the A record where client IP is stored. The FQDN have two parts: host name and domain name. The domain name will be used as the zone name.</p>
+                <p>Record name is an Fully Qualified Domain Name (FQDN) which will be the A record where client IP is
+                  stored. The FQDN have two parts: host name and domain name. The domain name will be used as the zone
+                  name.</p>
                 <br>
-                <p><b>Documentation : </b><a href="https://github.com/jwala-diamonds/ddnslab.tech/blob/master/README.md" target="blank"><img class="ml-2 img-responsive img-rounded img-thumbnail" style="" width="122" height="41" src="public/images/github-button.png"></a></p>
+                <p><b>Documentation : </b><a href="https://github.com/jwala-diamonds/ddnslab.tech/blob/master/README.md"
+                    target="blank"><img class="ml-2 img-responsive img-rounded img-thumbnail" width="122" height="41"
+                      src="public/images/github-button.png"></a></p>
               </div>
             </div>
           </div>
@@ -70,9 +80,11 @@ Zone.DNS.Edit</b></pre>
                 <div class="form-group">
                   <label class="control-label" for="apitoken">API Token</label>
                   <div class="mb-2">
-                    <input type="password" class="form-control" id="apitoken" name="apitoken" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxx" />
+                    <input type="password" class="form-control" id="apitoken" name="apitoken"
+                      placeholder="xxxxxxxxxxxxxxxxxxxxxxxxx" />
                     <small class="form-text text-muted mt-15 mb-15">
-                      The API Token must 40 characters long and it is obtained from Cloudflare dashboard > My Profile > API Tokens > Create Token.
+                      The API Token must 40 characters long and it is obtained from Cloudflare dashboard > My Profile >
+                      API Tokens > Create Token.
                     </small>
                   </div>
                 </div>
@@ -81,7 +93,8 @@ Zone.DNS.Edit</b></pre>
                   <div class="mb-2">
                     <input type="text" class="form-control" id="rname" name="rname" placeholder="home.example.com" />
                     <small class="form-text text-muted mt-15 mb-15">
-                      This is used to create a new "A" record or update existing record in the Cloudflare DNS of the specified zone which points to the current public IP of your gateway.
+                      This is used to create a new "A" record or update existing record in the Cloudflare DNS of the
+                      specified zone which points to the current public IP of your gateway.
                     </small>
                   </div>
                 </div>
@@ -96,7 +109,9 @@ Zone.DNS.Edit</b></pre>
                       </label>
                     </div>
                     <small class="form-text text-muted mt-15 mb-15">
-                      Turn off this option if you need to bypass the Cloudflare proxy and access particular ports like 22, 8000, 10000, etc. This will disable all security and privacy features provided by Cloudlfare for that record.
+                      Turn off this option if you need to bypass the Cloudflare proxy and access particular ports like
+                      22, 8000, 10000, etc. This will disable all security and privacy features provided by Cloudlfare
+                      for that record.
                     </small>
                   </div>
                 </div>
@@ -109,7 +124,8 @@ Zone.DNS.Edit</b></pre>
                 <h5 class="card-title">Actions</h5>
                 <div class="form-group">
                   <label for="ipaddress">Your IP Address</label>
-                  <input class="form-control" id="ipaddress" name="ipaddress" type="text" placeholder="Loading your IP . . . " readonly>
+                  <input class="form-control" id="ipaddress" name="ipaddress" type="text"
+                    placeholder="Loading your IP . . . " readonly>
                 </div>
                 <div class="form-group">
                   <button type="submit" class="button" name="test" value="Test">Test</button>
@@ -130,7 +146,7 @@ Zone.DNS.Edit</b></pre>
             <div class="text-center text-md-center">
               <p class="mb-0"> &copy; Copyright <span id="copyright">
                   <script>
-                  document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+                    document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
                   </script>
                 </span> <a href="#"> DDNSLab.Tech </a></p>
             </div>
@@ -151,7 +167,7 @@ Zone.DNS.Edit</b></pre>
   <script src="public/js/plugins-jquery.js"></script>
   <!-- plugin_path -->
   <script>
-  var plugin_path = 'public/js/';
+    var plugin_path = 'public/js/';
   </script>
   <!-- charts sparkline -->
   <script src="public/js/sparkline.init.js"></script>
